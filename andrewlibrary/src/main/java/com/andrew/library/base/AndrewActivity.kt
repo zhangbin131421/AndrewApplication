@@ -13,7 +13,7 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.MutableLiveData
 import com.andrew.library.R
 import com.andrew.library.observer.LoadingObserver
-import com.andrew.library.utils.AppUtils
+import com.andrew.library.utils.AndrewAppUtils
 import com.blankj.utilcode.util.BarUtils
 
 
@@ -159,7 +159,7 @@ abstract class AndrewActivity : AppCompatActivity() {
     }
 
     override fun startActivityForResult(intent: Intent, requestCode: Int) {
-        if (AppUtils.checkIntentActivity(intent)) {
+        if (AndrewAppUtils.checkIntentActivity(intent)) {
             super.startActivityForResult(intent, requestCode)
         }
     }

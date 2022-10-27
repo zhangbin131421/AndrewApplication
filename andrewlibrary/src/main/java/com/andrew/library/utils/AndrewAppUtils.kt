@@ -4,7 +4,7 @@ import android.content.Intent
 import com.andrew.library.base.AndrewApplication
 
 
-object AppUtils {
+object AndrewAppUtils {
 
     fun getAuthority(): String {
         return "${AndrewApplication.instance.packageName}.fileprovider"

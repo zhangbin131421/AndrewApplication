@@ -9,7 +9,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import com.andrew.library.utils.AppUtils
+import com.andrew.library.utils.AndrewAppUtils
 
 abstract class AndrewBaseFragment : Fragment() {
 
@@ -183,13 +183,13 @@ abstract class AndrewBaseFragment : Fragment() {
     }
 
     override fun startActivity(intent: Intent) {
-        if (AppUtils.checkIntentActivity(intent)) {
+        if (AndrewAppUtils.checkIntentActivity(intent)) {
             super.startActivity(intent)
         }
     }
 
     override fun startActivityForResult(intent: Intent, requestCode: Int) {
-        if (AppUtils.checkIntentActivity(intent)) {
+        if (AndrewAppUtils.checkIntentActivity(intent)) {
             super.startActivityForResult(intent, requestCode)
         }
     }
