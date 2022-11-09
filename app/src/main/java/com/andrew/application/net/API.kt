@@ -1,35 +1,38 @@
-package com.andrew.application.net;
+package com.andrew.application.net
 
+import androidx.lifecycle.LiveData
+import com.andrew.application.BuildConfig
+import com.andrew.application.mode.response.ContentModel
+import com.andrew.library.model.BaseResponse
+import com.andrew.library.net.RetrofitHelper
+import okhttp3.RequestBody
+import retrofit2.Call
+import retrofit2.http.Body
+import retrofit2.http.POST
 
+const val URL_ROOT_LOCAL = "http://121.41.29.237:9092" //
+const val URL_ROOT_TEST = "https://lwtest.yibaobt.com" //测试环境
+const val URL_ROOT_PRD = "https://lw.eyongtech.com" //正式环境
+const val URL_ROOT = URL_ROOT_LOCAL
+const val API_URL = "$URL_ROOT/"
 
-import androidx.lifecycle.LiveData;
+val api: API by lazy {
+    RetrofitHelper.DEBUG = BuildConfig.DEBUG
+    RetrofitHelper.getRetrofit(API_URL).create(API::class.java)
+}
 
-import com.andrew.library.model.BaseResponse;
-import com.andrew.library.net.RetrofitHelper;
+val apiLiveData: API by lazy {
+    RetrofitHelper.DEBUG = BuildConfig.DEBUG
+    RetrofitHelper.getRetrofitLiveData(API_URL).create(API::class.java)
+}
 
-import okhttp3.RequestBody;
-import retrofit2.http.Body;
-import retrofit2.http.POST;
+interface API {
+    @POST("tcontent/search")
+    fun contentSearch(@Body requestBody: RequestBody?): Call<BaseResponse<List<ContentModel>>>?
 
-public interface API {
+    @POST("tcontent/search")
+    suspend fun contentSearchCoroutine(@Body requestBody: RequestBody?): BaseResponse<List<ContentModel>>?
 
-    //    String URL_ROOT_LOCAL = "http://192.168.124.117";//测试环境
-    String URL_ROOT_LOCAL = "https://192.168.124.108";//乔
-    String URL_ROOT_TEST = "https://lwtest.yibaobt.com";//测试环境
-    String URL_ROOT_PRD = "https://lw.eyongtech.com";//正式环境
-
-    String URL_ROOT = URL_ROOT_TEST;
-
-    String API_URL = URL_ROOT + "/";
-
-
-    class Builder {
-        public static API getDefaultService() {
-            return RetrofitHelper.getInstance().getBuilder(API_URL).build().create(API.class);
-        }
-    }
-
-    @POST("api/user/json")
-    LiveData<BaseResponse> login(@Body RequestBody requestBody);//账号密码登录
-
+    @POST("tcontent/search")
+    fun contentSearchLiveData(@Body requestBody: RequestBody?): LiveData<BaseResponse<List<ContentModel>>?>?
 }

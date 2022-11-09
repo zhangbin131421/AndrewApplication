@@ -12,6 +12,10 @@ fun objToRequestBody(obj: Any?): RequestBody {
     return objStr.toRequestBody("application/json;charset=utf-8".toMediaType())
 }
 
+fun Any?.mObjToRequestBody():RequestBody{
+    return Gson().toJson(this).toRequestBody("application/json;charset=utf-8".toMediaType())
+}
+
 //fun generateRequestBody(requestDataMap: Map<String, String?>): Map<String, RequestBody>? {
 //    val requestBodyMap: MutableMap<String, RequestBody> = HashMap()
 //    for (key in requestDataMap.keys) {

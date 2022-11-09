@@ -42,7 +42,7 @@ dependencies {
 
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.1'
-    implementation 'com.google.android.material:material:1.5.0'
+    implementation 'com.google.android.material:material:1.6.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.4.1'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1'
@@ -50,4 +50,10 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+
+//    https://github.com/LuckSiege/PictureSelector/blob/version_component/README_CN.md
+    implementation 'io.github.lucksiege:pictureselector:v3.10.6' // PictureSelector 基础 (必须)
+    implementation 'io.github.lucksiege:compress:v3.10.6'// 图片压缩 (按需引入)
+    implementation 'io.github.lucksiege:ucrop:v3.10.6'    // 图片裁剪 (按需引入)
+    implementation 'io.github.lucksiege:camerax:v3.10.6' // 自定义相机 (按需引入)
 }

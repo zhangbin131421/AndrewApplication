@@ -1,9 +1,11 @@
 package com.andrew.application.base
 
+import com.andrew.application.BuildConfig
 import com.andrew.library.base.AndrewApplication
 
 
 class BaseApplication : AndrewApplication() {
+
     companion object {
         lateinit var instance: BaseApplication
     }

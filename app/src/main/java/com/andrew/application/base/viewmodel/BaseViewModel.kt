@@ -6,6 +6,6 @@ import com.andrew.application.net.API
 
 open class BaseViewModel : AndrewViewModel() {
     var layoutTitle: LayoutTitle? = null
-    protected val api: API = API.Builder.getDefaultService()
+//    protected val api: API = API.Builder.defaultService
 
 }
