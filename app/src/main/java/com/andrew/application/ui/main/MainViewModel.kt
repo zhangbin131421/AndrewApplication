@@ -1,6 +1,7 @@
 package com.andrew.application.ui.main
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.viewModelScope
 import com.andrew.application.base.viewmodel.BaseViewModel
@@ -16,6 +17,7 @@ import retrofit2.Call
 import retrofit2.Response
 
 class MainViewModel : BaseViewModel() {
+    val content = MutableLiveData<String>()
     val contentSearchLiveData = Transformations.switchMap(refreshTrigger) {
         val requestContentSearch =
             RequestContentSearch(
@@ -54,7 +56,10 @@ class MainViewModel : BaseViewModel() {
                 lat = 0.0
             )
         viewModelScope.launch(Dispatchers.IO) {
-            api.contentSearchCoroutine(requestContentSearch.toRequestBody())
+            val result = api.contentSearchCoroutine(requestContentSearch.toRequestBody())
+            result?.let {
+                content.postValue(result.data?.size.toString())
+            }
         }
     }
 

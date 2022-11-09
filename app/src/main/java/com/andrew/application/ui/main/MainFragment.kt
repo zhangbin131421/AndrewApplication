@@ -19,13 +19,13 @@ class MainFragment(override val layoutId: Int = R.layout.fragment_main) :
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         bindingView.vm = vm
-        bindingView.message.setOnClickListener {
+        bindingView.btn.setOnClickListener {
             vm.refreshLoading()
         }
 //        vm.contentSearchLiveData.observe(viewLifecycleOwner) {}
 //        vm.contentSearchLiveData()?.observe(viewLifecycleOwner) {}
-//        vm.contentSearchCoroutine()
-        vm.contentSearch()
+        vm.contentSearchCoroutine()
+//        vm.contentSearch()
 //        vm.getListProject()
 
     }
